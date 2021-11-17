@@ -1,7 +1,6 @@
 const express = require('express')
-const serverless = require('serverless-http');
 const app = express()
-const port = 3000
+const port = 3000 
 
 app.get('/', (req, res) => {
     res.send('Hello World!')
@@ -28,7 +27,9 @@ app.get('/metadata/:id', (req, res) => {
 
 app.get('/image/:id', (req, res) => {
   let id = req.params.id
-  res.sendFile('/home/amine/Projects/NFT/PLAINCANVAS/PLAIN.png');
+  res.sendFile(__dirname + '/PLAIN.png');
 })
 
-module.exports.handler = serverless(app);
+app.listen(process.env.PORT || port, () => {
+  console.log(`PLAIN CANVAS listening`)
+})
