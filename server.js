@@ -1,4 +1,5 @@
 const express = require('express')
+const serverless = require('serverless-http');
 const app = express()
 const port = 3000
 
@@ -30,6 +31,4 @@ app.get('/image/:id', (req, res) => {
   res.sendFile('/home/amine/Projects/NFT/PLAINCANVAS/PLAIN.png');
 })
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
+module.exports.handler = serverless(app);
